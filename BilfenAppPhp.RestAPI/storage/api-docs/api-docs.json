@@ -1,0 +1,175 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Bilfen API",
+        "version": "v1"
+    },
+    "paths": {
+        "/api-docs": {},
+        "/api/documents/GetAllDocuments": {
+            "get": {
+                "tags": [
+                    "Documents"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrives a list of documents",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "example": {
+                                            "Id": 0,
+                                            "Name": "string",
+                                            "FilePath": "string",
+                                            "Status": "string",
+                                            "CreatedAt": "string",
+                                            "UpdatedAt": "string",
+                                            "UserId": 0,
+                                            "User": {
+                                                "Id": 0,
+                                                "FirstName": "string",
+                                                "LastName": "string",
+                                                "UserName": "string",
+                                                "Email": "string",
+                                                "Password": "string",
+                                                "PasswordHash": "string",
+                                                "createdAt": "string",
+                                                "updatedAt": "string",
+                                                "RoleId": 0,
+                                                "Role": {
+                                                    "Id": 0,
+                                                    "Name": "string",
+                                                    "createdAt": "string",
+                                                    "updatedAt": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/documents/GetAllDocumentsByUserId/{userId}": {
+            "get": {
+                "tags": [
+                    "Documents"
+                ],
+                "parameters": [{
+                    "in": "path",
+                    "name": "userId",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "required": true
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Retrives a list of documents by user id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "example": {
+                                            "Id": 0,
+                                            "Name": "string",
+                                            "FilePath": "string",
+                                            "Status": "string",
+                                            "CreatedAt": "string",
+                                            "UpdatedAt": "string",
+                                            "UserId": 0,
+                                            "User": {
+                                                "Id": 0,
+                                                "FirstName": "string",
+                                                "LastName": "string",
+                                                "UserName": "string",
+                                                "Email": "string",
+                                                "Password": "string",
+                                                "PasswordHash": "string",
+                                                "createdAt": "string",
+                                                "updatedAt": "string",
+                                                "RoleId": 0,
+                                                "Role": {
+                                                    "Id": 0,
+                                                    "Name": "string",
+                                                    "createdAt": "string",
+                                                    "updatedAt": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/documents/GetDocument/{id}": {
+            "get": {
+                "tags": [
+                    "Documents"
+                ],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "required": true
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Retrives a document by id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "example": {
+                                        "Id": 0,
+                                        "Name": "string",
+                                        "FilePath": "string",
+                                        "Status": "string",
+                                        "CreatedAt": "string",
+                                        "UpdatedAt": "string",
+                                        "UserId": 0,
+                                        "User": {
+                                            "Id": 0,
+                                            "FirstName": "string",
+                                            "LastName": "string",
+                                            "UserName": "string",
+                                            "Email": "string",
+                                            "Password": "string",
+                                            "PasswordHash": "string",
+                                            "createdAt": "string",
+                                            "updatedAt": "string",
+                                            "RoleId": 0,
+                                            "Role": {
+                                                "Id": 0,
+                                                "Name": "string",
+                                                "createdAt": "string",
+                                                "updatedAt": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Documents"
+        }
+    ]
+}

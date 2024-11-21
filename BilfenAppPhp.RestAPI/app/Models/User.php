@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static create(array $addedUser)
+ * @method static where(string $string, mixed $id)
+ */
 class User extends Model
 {
     use HasFactory;
@@ -36,7 +40,7 @@ class User extends Model
 
     public function role()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class, 'RoleId', 'Id');
     }
 
     public function documents()

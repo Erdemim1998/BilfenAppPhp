@@ -5,6 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static create(array $array)
+ * @method static find(mixed $Id)
+ * @method static where(string $string, $id)
+ */
 class Document extends Model
 {
     use HasFactory;
@@ -33,6 +38,6 @@ class Document extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'UserId', 'Id');
     }
 }

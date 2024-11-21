@@ -4,6 +4,216 @@
         "title": "Bilfen API",
         "version": "v1"
     },
+    "components": {
+        "schemas": {
+            "Document": {
+                "type": "object",
+                "required": ["Name", "FilePath", "Status", "CreatedAt", "UpdatedAt"],
+                "properties": {
+                    "Id": { "type": "integer", "description": "The auto-generated id of the document" },
+                    "Name": { "type": "string", "description": "The document's name" },
+                    "FilePath": { "type": "string", "description": "The document's file path" },
+                    "Status": { "type": "string", "description": "The document's status" },
+                    "CreatedAt": { "type": "string", "format": "date-time", "description": "The document's created date" },
+                    "UpdatedAt": { "type": "string", "format": "date-time", "description": "The document's updated date" },
+                    "UserId": { "type": "integer", "description": "The document's user id" },
+                    "User": { "$ref": "#/components/schemas/User" }
+                },
+                "example": {
+                    "Id": 0,
+                    "Name": "string",
+                    "FilePath": "string",
+                    "Status": "string",
+                    "CreatedAt": "string",
+                    "UpdatedAt": "string",
+                    "UserId": 0,
+                    "User": {
+                        "Id": 0,
+                        "FirstName": "string",
+                        "LastName": "string",
+                        "UserName": "string",
+                        "Email": "string",
+                        "Password": "string",
+                        "PasswordHash": "string",
+                        "createdAt": "string",
+                        "updatedAt": "string",
+                        "RoleId": 0,
+                        "Role": {
+                            "Id": 0,
+                            "Name": "string",
+                            "createdAt": "string",
+                            "updatedAt": "string"
+                        }
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "required": ["FirstName", "LastName", "UserName", "Email", "Password", "PasswordHash", "createdAt", "updatedAt"],
+                "properties": {
+                    "Id": { "type": "integer", "description": "The auto-generated id of the user" },
+                    "FirstName": { "type": "string", "description": "The user's first name" },
+                    "LastName": { "type": "string", "description": "The user's last name" },
+                    "UserName": { "type": "string", "description": "The user's user name" },
+                    "Email": { "type": "string", "format": "email", "description": "The user's email" },
+                    "Password": { "type": "string", "description": "The user's password" },
+                    "PasswordHash": { "type": "string", "description": "The user's hashed password" },
+                    "createdAt": { "type": "string", "format": "date-time", "description": "The user's created date" },
+                    "updatedAt": { "type": "string", "format": "date-time", "description": "The user's updated date" },
+                    "RoleId": { "type": "integer", "description": "The user's role id" },
+                    "Role": { "$ref": "#/components/schemas/Role" }
+                },
+                "example": {
+                    "Id": 0,
+                    "FirstName": "string",
+                    "LastName": "string",
+                    "UserName": "string",
+                    "Email": "string",
+                    "Password": "string",
+                    "PasswordHash": "string",
+                    "createdAt": "string",
+                    "updatedAt": "string",
+                    "RoleId": 0,
+                    "Role": {
+                        "Id": 0,
+                        "Name": "string",
+                        "createdAt": "string",
+                        "updatedAt": "string"
+                    }
+                }
+            },
+            "Role": {
+                "type": "object",
+                "required": ["Name", "createdAt", "updatedAt"],
+                "properties": {
+                    "Id": { "type": "integer", "description": "The auto-generated id of the role" },
+                    "Name": { "type": "string", "description": "The role's name" },
+                    "createdAt": { "type": "string", "format": "date-time", "description": "The role's created date" },
+                    "updatedAt": { "type": "string", "format": "date-time", "description": "The role's updated date" }
+                },
+                "example": {
+                    "Id": 0,
+                    "Name": "string",
+                    "createdAt": "string",
+                    "updatedAt": "string"
+                }
+            },
+            "CreateUpdateDocument": {
+                "type": "object",
+                "required": ["Name","FilePath","Status", "UserId"],
+                "properties": {
+                    "Id": { "type": "integer", "description": "The auto-generated id of the document" },
+                    "Name": { "type": "string", "description": "The document's name" },
+                    "FilePath": { "type": "string", "description": "The document's file path" },
+                    "Status": { "type": "string", "description": "The document's status" },
+                    "UserId": { "type": "integer", "description": "The document's user id" }
+                }
+            },
+            "CreateUpdateRole": {
+                "type": "object",
+                "required": ["Name"],
+                "properties": {
+                    "Id": { "type": "integer", "description": "The auto-generated id of the role" },
+                    "Name": { "type": "string", "description": "The role's name" }
+                }
+            },
+            "CreateUpdateUser": {
+                "type": "object",
+                "required": ["FirstName", "LastName", "UserName", "Email", "Password", "RoleId"],
+                "properties": {
+                    "Id": { "type": "integer", "description": "The auto-generated id of the user" },
+                    "FirstName": { "type": "string", "description": "The user's first name" },
+                    "LastName": { "type": "string", "description": "The user's last name" },
+                    "UserName": { "type": "string", "description": "The user's user name" },
+                    "Email": { "type": "string", "description": "The user's email" },
+                    "Password": { "type": "string", "description": "The user's password" },
+                    "RoleId": { "type": "integer", "description": "The user's role id" }
+                }
+            },
+            "Login": {
+                "type": "object",
+                "required": ["Email", "Password"],
+                "properties": {
+                    "Email": { "type": "string", "description": "The user's email" },
+                    "Password": { "type": "string", "description": "The user's password" }
+                }
+            },
+            "LoginAuthenticate": {
+                "type": "object",
+                "required": ["token", "isAuthenticated", "userId"],
+                "properties": {
+                    "token": { "type": "string", "description": "The user's JWT" },
+                    "isAuthenticated": { "type": "boolean", "description": "The user's authenticated info" },
+                    "userId": { "type": "integer", "description": "The user's id" }
+                }
+            },
+            "SendNotification": {
+                "type": "object",
+                "required": ["IsApprove", "PublicKey", "PrivateKey", "Subscription", "endpoint", "expirationTime", "keys", "auth", "p256dh"],
+                "properties": {
+                    "IsApprove": { "type": "boolean", "description": "IsApprove information" },
+                    "PublicKey": { "type": "string", "description": "Public vapid key information" },
+                    "PrivateKey": { "type": "string", "description": "Private vapid key information" },
+                    "Subscription": { "type": "object", "description": "Notification subscription informations" },
+                    "endpoint": { "type": "string", "description": "Notification endpoint information" },
+                    "expirationTime": { "type": "string", "description": "Notification expiration date information" },
+                    "keys": { "type": "object", "description": "Notification key informations" },
+                    "auth": { "type": "string", "description": "Notification auth information" },
+                    "p256dh": { "type": "string", "description": "Notification p256dh information" }
+                },
+                "example": {
+                    "IsApprove": false,
+                    "PublicKey": "string",
+                    "PrivateKey": "string",
+                    "Subscription": {
+                        "endpoint": "string",
+                        "expirationTime": "0001-01-01 00:00:00",
+                        "keys": {
+                            "auth": "string",
+                            "p256dh": "string"
+                        }
+                    }
+                }
+            },
+            "Message": {
+                "type": "object",
+                "properties": {
+                    "code": { "type": "integer", "description": "Code information" },
+                    "message": { "type": "string", "description": "Message information" }
+                },
+                "example": {
+                    "code": 0,
+                    "message": "string"
+                }
+            },
+            "SendEmail": {
+                "type": "object",
+                "required": ["DocumentName", "CreateDate", "ToUserFirstName", "ToUserLastName", "ToUserEmail", "FromUserEmail", "FromUserFirstName", "FromUserLastName", "MailType"],
+                "properties": {
+                    "DocumentName": { "type": "string", "description": "The email's document name" },
+                    "CreateDate": { "type": "string", "description": "The email's created date" },
+                    "ToUserFirstName": { "type": "string", "description": "The email's to user's first name" },
+                    "ToUserLastName": { "type": "string", "description": "The email's to user's last name" },
+                    "ToUserEmail": { "type": "string", "description": "The email's to user's email" },
+                    "FromUserEmail": { "type": "string", "description": "The email's from user's email" },
+                    "FromUserFirstName": { "type": "string", "description": "The email's from user's first name" },
+                    "FromUserLastName": { "type": "string", "description": "The email's from user's last name" },
+                    "MailType": { "type": "string", "description": "The email's mail type" }
+                },
+                "example": {
+                    "DocumentName": "string",
+                    "CreateDate": "string",
+                    "ToUserFirstName": "string",
+                    "ToUserLastName": "string",
+                    "ToUserEmail": "string",
+                    "FromUserEmail": "string",
+                    "FromUserFirstName": "string",
+                    "FromUserLastName": "string",
+                    "MailType": "string"
+                }
+            }
+        }
+    },
     "paths": {
         "/api-docs": {},
         "/api/documents/GetAllDocuments": {
@@ -11,6 +221,7 @@
                 "tags": [
                     "Documents"
                 ],
+                "operationId": "allDocuments",
                 "responses": {
                     "200": {
                         "description": "Retrives a list of documents",
@@ -18,36 +229,7 @@
                             "application/json": {
                                 "schema": {
                                     "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "example": {
-                                            "Id": 0,
-                                            "Name": "string",
-                                            "FilePath": "string",
-                                            "Status": "string",
-                                            "CreatedAt": "string",
-                                            "UpdatedAt": "string",
-                                            "UserId": 0,
-                                            "User": {
-                                                "Id": 0,
-                                                "FirstName": "string",
-                                                "LastName": "string",
-                                                "UserName": "string",
-                                                "Email": "string",
-                                                "Password": "string",
-                                                "PasswordHash": "string",
-                                                "createdAt": "string",
-                                                "updatedAt": "string",
-                                                "RoleId": 0,
-                                                "Role": {
-                                                    "Id": 0,
-                                                    "Name": "string",
-                                                    "createdAt": "string",
-                                                    "updatedAt": "string"
-                                                }
-                                            }
-                                        }
-                                    }
+                                    "items": { "$ref": "#/components/schemas/Document" }
                                 }
                             }
                         }
@@ -63,11 +245,13 @@
                 "parameters": [{
                     "in": "path",
                     "name": "userId",
+                    "description": "User Id",
                     "schema": {
                         "type": "integer"
                     },
                     "required": true
                 }],
+                "operationId": "allDocumentsByUserId",
                 "responses": {
                     "200": {
                         "description": "Retrives a list of documents by user id",
@@ -75,36 +259,7 @@
                             "application/json": {
                                 "schema": {
                                     "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "example": {
-                                            "Id": 0,
-                                            "Name": "string",
-                                            "FilePath": "string",
-                                            "Status": "string",
-                                            "CreatedAt": "string",
-                                            "UpdatedAt": "string",
-                                            "UserId": 0,
-                                            "User": {
-                                                "Id": 0,
-                                                "FirstName": "string",
-                                                "LastName": "string",
-                                                "UserName": "string",
-                                                "Email": "string",
-                                                "Password": "string",
-                                                "PasswordHash": "string",
-                                                "createdAt": "string",
-                                                "updatedAt": "string",
-                                                "RoleId": 0,
-                                                "Role": {
-                                                    "Id": 0,
-                                                    "Name": "string",
-                                                    "createdAt": "string",
-                                                    "updatedAt": "string"
-                                                }
-                                            }
-                                        }
-                                    }
+                                    "items": { "$ref": "#/components/schemas/Document" }
                                 }
                             }
                         }
@@ -120,45 +275,443 @@
                 "parameters": [{
                     "in": "path",
                     "name": "id",
+                    "description": "Document Id",
                     "schema": {
                         "type": "integer"
                     },
                     "required": true
                 }],
+                "operationId": "documentById",
                 "responses": {
                     "200": {
                         "description": "Retrives a document by id",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "example": {
-                                        "Id": 0,
-                                        "Name": "string",
-                                        "FilePath": "string",
-                                        "Status": "string",
-                                        "CreatedAt": "string",
-                                        "UpdatedAt": "string",
-                                        "UserId": 0,
-                                        "User": {
-                                            "Id": 0,
-                                            "FirstName": "string",
-                                            "LastName": "string",
-                                            "UserName": "string",
-                                            "Email": "string",
-                                            "Password": "string",
-                                            "PasswordHash": "string",
-                                            "createdAt": "string",
-                                            "updatedAt": "string",
-                                            "RoleId": 0,
-                                            "Role": {
-                                                "Id": 0,
-                                                "Name": "string",
-                                                "createdAt": "string",
-                                                "updatedAt": "string"
-                                            }
-                                        }
-                                    }
+                                    "$ref": "#/components/schemas/Document"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/documents/CreateDocument": {
+            "post": {
+                "tags": ["Documents"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUpdateDocument"
+                            }
+                        }
+                    }
+                },
+                "operationId": "createDocument",
+                "responses": {
+                    "200": {
+                        "description": "Create a new document data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Document"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/documents/EditDocument": {
+            "put": {
+                "tags": ["Documents"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUpdateDocument"
+                            }
+                        }
+                    }
+                },
+                "operationId": "editDocument",
+                "responses": {
+                    "200": {
+                        "description": "Edit an existing document data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Document"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/documents/DeleteDocument/{id}": {
+            "delete": {
+                "tags": ["Documents"],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Document Id",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "required": true
+                }],
+                "operationId": "deleteDocument",
+                "responses": {
+                    "204": {
+                        "description": "Delete an existing document data"
+                    }
+                }
+            }
+        },
+        "/api/roles/GetAllRoles": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "operationId": "allRoles",
+                "responses": {
+                    "200": {
+                        "description": "Retrives a list of roles",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": { "$ref": "#/components/schemas/Role" }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles/GetRole/{id}": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Role Id",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "required": true
+                }],
+                "operationId": "roleById",
+                "responses": {
+                    "200": {
+                        "description": "Retrives a role by id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Role"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles/CreateRole": {
+            "post": {
+                "tags": ["Roles"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUpdateRole"
+                            }
+                        }
+                    }
+                },
+                "operationId": "createRole",
+                "responses": {
+                    "200": {
+                        "description": "Create a new role data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Role"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles/EditRole": {
+            "put": {
+                "tags": ["Roles"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUpdateRole"
+                            }
+                        }
+                    }
+                },
+                "operationId": "editRole",
+                "responses": {
+                    "200": {
+                        "description": "Edit an existing role data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Role"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles/DeleteRole/{id}": {
+            "delete": {
+                "tags": ["Roles"],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Role Id",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "required": true
+                }],
+                "operationId": "deleteRole",
+                "responses": {
+                    "204": {
+                        "description": "Delete an existing role data"
+                    }
+                }
+            }
+        },
+        "/api/users/GetAllUsers": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "operationId": "allUsers",
+                "responses": {
+                    "200": {
+                        "description": "Retrives a list of users",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": { "$ref": "#/components/schemas/User" }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/GetUser/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "User Id",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "required": true
+                }],
+                "operationId": "getUser",
+                "responses": {
+                    "200": {
+                        "description": "Retrives a user by id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/Login": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    }
+                },
+                "operationId": "login",
+                "responses": {
+                    "200": {
+                        "description": "Create a new user data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginAuthenticate"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/CreateUser": {
+            "post": {
+                "tags": ["Users"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUpdateUser"
+                            }
+                        }
+                    }
+                },
+                "operationId": "createUser",
+                "responses": {
+                    "200": {
+                        "description": "Create a new user data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/EditUser": {
+            "put": {
+                "tags": ["Users"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUpdateUser"
+                            }
+                        }
+                    }
+                },
+                "operationId": "editUser",
+                "responses": {
+                    "200": {
+                        "description": "Edit an existing user data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/DeleteUser/{id}": {
+            "delete": {
+                "tags": ["Users"],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "User Id",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "required": true
+                }],
+                "responses": {
+                    "204": {
+                        "description": "Delete an existing user data"
+                    }
+                }
+            }
+        },
+        "/api/users/GetVapidKeys": {
+            "get": {
+                "tags": ["Users"],
+                "operationId": "getKeyUser",
+                "responses": {
+                    "200": {
+                        "description": "Public and private vapid key for notification"
+                    }
+                }
+            }
+        },
+        "/api/users/SendNotification": {
+            "post": {
+                "tags": ["Users"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SendNotification"
+                            }
+                        }
+                    }
+                },
+                "operationId": "sendNotification",
+                "responses": {
+                    "200": {
+                        "description": "Notification sending information",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Message"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/SendEmail": {
+            "post": {
+                "tags": ["Users"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SendEmail"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Email sending information",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Message"
                                 }
                             }
                         }
@@ -170,6 +723,12 @@
     "tags": [
         {
             "name": "Documents"
+        },
+        {
+            "name": "Roles"
+        },
+        {
+            "name": "Users"
         }
     ]
 }

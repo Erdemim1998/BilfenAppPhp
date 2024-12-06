@@ -1,0 +1,29 @@
+{
+  "_js.cookie-DAgpH7j8.js": {
+    "file": "assets/js.cookie-DAgpH7j8.js",
+    "name": "js.cookie"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-Bydg6tpR.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CFL9YqwR.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_js.cookie-DAgpH7j8.js"
+    ]
+  },
+  "resources/js/bootstrap.js": {
+    "file": "assets/bootstrap-CFL9YqwR.js",
+    "name": "bootstrap",
+    "src": "resources/js/bootstrap.js",
+    "isEntry": true,
+    "imports": [
+      "_js.cookie-DAgpH7j8.js"
+    ]
+  }
+}

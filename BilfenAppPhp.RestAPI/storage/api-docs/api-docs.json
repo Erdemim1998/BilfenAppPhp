@@ -49,7 +49,9 @@
             },
             "User": {
                 "type": "object",
-                "required": ["FirstName", "LastName", "UserName", "Email", "Password", "PasswordHash", "createdAt", "updatedAt"],
+                "required": ["FirstName", "LastName", "UserName", "Email", "Password", "PasswordHash", "createdAt", "updatedAt",
+                "RoleId", "TCKN", "MotherName", "FatherName", "BirthDate", "Gender", "CivilStatus", "EmploymentDate", "CountryId",
+                "CityId", "DistrictId", "Address"],
                 "properties": {
                     "Id": { "type": "integer", "description": "The auto-generated id of the user" },
                     "FirstName": { "type": "string", "description": "The user's first name" },
@@ -58,10 +60,27 @@
                     "Email": { "type": "string", "format": "email", "description": "The user's email" },
                     "Password": { "type": "string", "description": "The user's password" },
                     "PasswordHash": { "type": "string", "description": "The user's hashed password" },
+                    "ImagePath": { "type": "string", "description": "The user's image path" },
+                    "TCKN": { "type": "string", "description": "The user's image path" },
+                    "MotherName": { "type": "string", "description": "The user's mother name" },
+                    "FatherName": { "type": "string", "description": "The user's father name" },
+                    "BirthDate": { "type": "string", "description": "The user's birth date" },
+                    "Gender": { "type": "string", "description": "The user's gender" },
+                    "CivilStatus": { "type": "string", "description": "The user's civil status" },
+                    "EmploymentDate": { "type": "string", "description": "The user's employment date" },
+                    "MilitaryStatus": { "type": "string", "description": "The user's military status" },
+                    "PostponementDate": { "type": "string", "description": "The user's postponement date" },
+                    "Address": { "type": "string", "description": "The user's postponement date" },
                     "createdAt": { "type": "string", "format": "date-time", "description": "The user's created date" },
                     "updatedAt": { "type": "string", "format": "date-time", "description": "The user's updated date" },
                     "RoleId": { "type": "integer", "description": "The user's role id" },
-                    "Role": { "$ref": "#/components/schemas/Role" }
+                    "Role": { "$ref": "#/components/schemas/Role" },
+                    "CountryId": { "type": "string", "description": "The user's country id" },
+                    "Country": { "$ref": "#/components/schemas/Country" },
+                    "CityId": { "type": "string", "description": "The user's city id" },
+                    "City": { "$ref": "#/components/schemas/City" },
+                    "DistrictId": { "type": "string", "description": "The user's district id" },
+                    "District": { "$ref": "#/components/schemas/District" }
                 },
                 "example": {
                     "Id": 0,
@@ -71,6 +90,17 @@
                     "Email": "string",
                     "Password": "string",
                     "PasswordHash": "string",
+                    "ImagePath": "string",
+                    "TCKN": "string",
+                    "MotherName": "string",
+                    "FatherName": "string",
+                    "BirthDate": "string",
+                    "Gender": "string",
+                    "CivilStatus": "string",
+                    "EmploymentDate": "string",
+                    "MilitaryStatus": "string",
+                    "PostponementDate": "string",
+                    "Address": "string",
                     "createdAt": "string",
                     "updatedAt": "string",
                     "RoleId": 0,
@@ -79,6 +109,48 @@
                         "Name": "string",
                         "createdAt": "string",
                         "updatedAt": "string"
+                    },
+                    "CountryId": "string",
+                    "Country": {
+                        "Id": "string",
+                        "Name": "string",
+                        "createdAt": "string",
+                        "updatedAt": "string"
+                    },
+                    "CityId": "string",
+                    "City": {
+                        "Id": "string",
+                        "Name": "string",
+                        "createdAt": "string",
+                        "updatedAt": "string",
+                        "CountryId": "string",
+                        "Country": {
+                            "Id": "string",
+                            "Name": "string",
+                            "createdAt": "string",
+                            "updatedAt": "string"
+                        }
+                    },
+                    "DistrictId": "string",
+                    "District": {
+                        "Id": "string",
+                        "Name": "string",
+                        "createdAt": "string",
+                        "updatedAt": "string",
+                        "CityId": "string",
+                        "City": {
+                            "Id": "string",
+                            "Name": "string",
+                            "createdAt": "string",
+                            "updatedAt": "string",
+                            "CountryId": "string",
+                            "Country": {
+                                "Id": "string",
+                                "Name": "string",
+                                "createdAt": "string",
+                                "updatedAt": "string"
+                            }
+                        }
                     }
                 }
             },
@@ -96,6 +168,79 @@
                     "Name": "string",
                     "createdAt": "string",
                     "updatedAt": "string"
+                }
+            },
+            "Country": {
+                "type": "object",
+                "required": ["Id", "Name", "createdAt", "updatedAt"],
+                "properties": {
+                    "Id": { "type": "string", "description": "The id of the country" },
+                    "Name": { "type": "string", "description": "The country's name" },
+                    "createdAt": { "type": "string", "description": "The country's created date" },
+                    "updatedAt": { "type": "string", "description": "The country's updated date" }
+                },
+                "example": {
+                    "Id": "string",
+                    "Name": "string",
+                    "createdAt": "string",
+                    "updatedAt": "string"
+                }
+            },
+            "City": {
+                "type": "object",
+                "required": ["Id", "Name", "CountryId", "createdAt", "updatedAt"],
+                "properties": {
+                    "Id": { "type": "string", "description": "The id of the city" },
+                    "Name": { "type": "string", "description": "The city's name" },
+                    "createdAt": { "type": "string", "description": "The city's created date" },
+                    "updatedAt": { "type": "string", "description": "The city's updated date" },
+                    "CountryId": { "type": "string", "description": "The city's country id" },
+                    "Country": { "$ref": "#/components/schemas/Country" }
+                },
+                "example": {
+                    "Id": "string",
+                    "Name": "string",
+                    "createdAt": "string",
+                    "updatedAt": "string",
+                    "CountryId": "string",
+                    "Country": {
+                        "Id": "string",
+                        "Name": "string",
+                        "createdAt": "string",
+                        "updatedAt": "string"
+                    }
+                }
+            },
+            "District": {
+                "type": "object",
+                "required": ["Id", "Name", "createdAt", "updatedAt", "CityId"],
+                "properties": {
+                    "Id": { "type": "string", "description": "The id of the district" },
+                    "Name": { "type": "string", "description": "The district's name" },
+                    "createdAt": { "type": "string", "description": "The district's created date" },
+                    "updatedAt": { "type": "string", "description": "The district's updated date" },
+                    "CityId": { "type": "string", "description": "The district's city id" },
+                    "City": { "$ref": "#/components/schemas/City" }
+                },
+                "example": {
+                    "Id": "string",
+                    "Name": "string",
+                    "createdAt": "string",
+                    "updatedAt": "string",
+                    "CityId": "string",
+                    "City": {
+                        "Id": "string",
+                        "Name": "string",
+                        "createdAt": "string",
+                        "updatedAt": "string",
+                        "CountryId": "string",
+                        "Country": {
+                            "Id": "string",
+                            "Name": "string",
+                            "createdAt": "string",
+                            "updatedAt": "string"
+                        }
+                    }
                 }
             },
             "CreateUpdateDocument": {
@@ -119,7 +264,9 @@
             },
             "CreateUpdateUser": {
                 "type": "object",
-                "required": ["FirstName", "LastName", "UserName", "Email", "Password", "RoleId"],
+                "required": ["FirstName", "LastName", "UserName", "Email", "Password", "RoleId",
+                "TCKN", "MotherName", "FatherName", "BirthDate", "Gender", "CivilStatus", "EmploymentDate",
+                "RoleId", "CountryId", "CityId", "DistrictId", "Address"],
                 "properties": {
                     "Id": { "type": "integer", "description": "The auto-generated id of the user" },
                     "FirstName": { "type": "string", "description": "The user's first name" },
@@ -127,7 +274,51 @@
                     "UserName": { "type": "string", "description": "The user's user name" },
                     "Email": { "type": "string", "description": "The user's email" },
                     "Password": { "type": "string", "description": "The user's password" },
-                    "RoleId": { "type": "integer", "description": "The user's role id" }
+                    "ImagePath": { "type": "string", "description": "The user's image path" },
+                    "TCKN": { "type": "string", "description": "The user's serial number" },
+                    "MotherName": { "type": "string", "description": "The user's mother name" },
+                    "FatherName": { "type": "string", "description": "The user's father name" },
+                    "BirthDate": { "type": "string", "description": "The user's birth date" },
+                    "Gender": { "type": "string", "description": "The user's gender" },
+                    "CivilStatus": { "type": "string", "description": "The user's civil status" },
+                    "EmploymentDate": { "type": "string", "description": "The user's employment date" },
+                    "MilitaryStatus": { "type": "string", "description": "The user's military status" },
+                    "PostponementDate": { "type": "string", "description": "The user's postponement date" },
+                    "Address": { "type": "string", "description": "The user's address" },
+                    "RoleId": { "type": "integer", "description": "The user's role id" },
+                    "CountryId": { "type": "string", "description": "The user's country id" },
+                    "CityId": { "type": "string", "description": "The user's city id" },
+                    "DistrictId": { "type": "string", "description": "The user's district id" }
+                }
+            },
+            "CreateUpdateCountry": {
+                "type": "object",
+                "required": ["Id", "Name"],
+                "properties": {
+                    "Id": { "type": "string", "description": "The id of the country" },
+                    "Name": { "type": "string", "description": "The country's name" }
+                },
+                "example": {
+                    "Id": "string",
+                    "Name": "string"
+                }
+            },
+            "CreateUpdateCity": {
+                "type": "object",
+                "required": ["Id", "Name", "CountryId"],
+                "properties": {
+                    "Id": { "type": "string", "description": "The id of the city" },
+                    "Name": { "type": "string", "description": "The city's name" },
+                    "CountryId": { "type": "string", "description": "The city's country id" }
+                }
+            },
+            "CreateUpdateDistrict": {
+                "type": "object",
+                "required": ["Id", "Name", "CityId"],
+                "properties": {
+                    "Id": { "type": "string", "description": "The id of the district" },
+                    "Name": { "type": "string", "description": "The district's name" },
+                    "CityId": { "type": "string", "description": "The district's city id" }
                 }
             },
             "Login": {
@@ -718,6 +909,441 @@
                     }
                 }
             }
+        },
+        "/api/countries/GetAllCountries": {
+            "get": {
+                "tags": [
+                    "Countries"
+                ],
+                "operationId": "allCountries",
+                "responses": {
+                    "200": {
+                        "description": "Retrives a list of countries",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": { "$ref": "#/components/schemas/Country" }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/countries/GetCountry/{id}": {
+            "get": {
+                "tags": [
+                    "Countries"
+                ],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Country Id",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "getCountry",
+                "responses": {
+                    "200": {
+                        "description": "Retrives a country by id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Country"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/countries/CreateCountry": {
+            "post": {
+                "tags": ["Countries"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUpdateCountry"
+                            }
+                        }
+                    }
+                },
+                "operationId": "createCountry",
+                "responses": {
+                    "200": {
+                        "description": "Create a new country data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Country"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/countries/EditCountry": {
+            "put": {
+                "tags": ["Countries"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUpdateCountry"
+                            }
+                        }
+                    }
+                },
+                "operationId": "editCountry",
+                "responses": {
+                    "200": {
+                        "description": "Edit an existing country data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Country"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/countries/DeleteCountry/{id}": {
+            "delete": {
+                "tags": ["Countries"],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Country Id",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "responses": {
+                    "204": {
+                        "description": "Delete an existing country data"
+                    }
+                }
+            }
+        },
+        "/api/cities/GetAllCities": {
+            "get": {
+                "tags": [
+                    "Cities"
+                ],
+                "operationId": "allCities",
+                "responses": {
+                    "200": {
+                        "description": "Retrives a list of cities",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": { "$ref": "#/components/schemas/City" }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cities/GetAllCitiesByCountryId/{countryId}": {
+            "get": {
+                "tags": [
+                    "Cities"
+                ],
+                "parameters": [{
+                    "in": "path",
+                    "name": "countryId",
+                    "description": "Country Id",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "allCitiesByCountryId",
+                "responses": {
+                    "200": {
+                        "description": "Retrives a list of cities by country id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": { "$ref": "#/components/schemas/City" }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cities/GetCity/{id}": {
+            "get": {
+                "tags": [
+                    "Cities"
+                ],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "City Id",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "getCity",
+                "responses": {
+                    "200": {
+                        "description": "Retrives a city by id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/City"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cities/CreateCity": {
+            "post": {
+                "tags": ["Cities"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUpdateCity"
+                            }
+                        }
+                    }
+                },
+                "operationId": "createCity",
+                "responses": {
+                    "200": {
+                        "description": "Create a new country data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/City"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cities/EditCity": {
+            "put": {
+                "tags": ["Cities"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUpdateCity"
+                            }
+                        }
+                    }
+                },
+                "operationId": "editCity",
+                "responses": {
+                    "200": {
+                        "description": "Edit an existing city data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/City"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cities/DeleteCity/{id}": {
+            "delete": {
+                "tags": ["Cities"],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "City Id",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "responses": {
+                    "204": {
+                        "description": "Delete an existing city data"
+                    }
+                }
+            }
+        },
+        "/api/districts/GetAllDistricts": {
+            "get": {
+                "tags": [
+                    "Districts"
+                ],
+                "operationId": "allDistricts",
+                "responses": {
+                    "200": {
+                        "description": "Retrives a list of districts",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": { "$ref": "#/components/schemas/District" }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/districts/GetAllDistrictsByCityId/{cityId}": {
+            "get": {
+                "tags": [
+                    "Districts"
+                ],
+                "parameters": [{
+                    "in": "path",
+                    "name": "cityId",
+                    "description": "City Id",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "allDistrictsByCityId",
+                "responses": {
+                    "200": {
+                        "description": "Retrives a list of districts by city id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": { "$ref": "#/components/schemas/District" }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/districts/GetDistrict/{id}": {
+            "get": {
+                "tags": [
+                    "Districts"
+                ],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "District Id",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "getDistrict",
+                "responses": {
+                    "200": {
+                        "description": "Retrives a district by id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/District"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/districts/CreateDistrict": {
+            "post": {
+                "tags": ["Districts"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUpdateDistrict"
+                            }
+                        }
+                    }
+                },
+                "operationId": "createDistrict",
+                "responses": {
+                    "200": {
+                        "description": "Create a new district data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/District"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/districts/EditDistrict": {
+            "put": {
+                "tags": ["Districts"],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUpdateDistrict"
+                            }
+                        }
+                    }
+                },
+                "operationId": "editDistrict",
+                "responses": {
+                    "200": {
+                        "description": "Edit an existing district data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/District"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/districts/DeleteDistrict/{id}": {
+            "delete": {
+                "tags": ["Districts"],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "District Id",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "responses": {
+                    "204": {
+                        "description": "Delete an existing district data"
+                    }
+                }
+            }
         }
     },
     "tags": [
@@ -729,6 +1355,15 @@
         },
         {
             "name": "Users"
+        },
+        {
+            "name": "Countries"
+        },
+        {
+            "name": "Cities"
+        },
+        {
+            "name": "Districts"
         }
     ]
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\UserRequest;
 use App\Models\Document;
 use App\Models\User;
 use Carbon\Carbon;
@@ -68,11 +69,84 @@ class UserController extends Controller
     {
         try{
             $users = User::with(['role' => function ($query) {
-                $query->select('Id', 'Name', DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
-                    DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt"));
-            }])->select(['Id', 'FirstName', 'LastName', 'UserName', 'Email', 'Password', 'PasswordHash',
+                    $query->select(
+                        'Id',
+                        'Name',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    );
+                }, 'country' => function ($query) {
+                    $query->select(
+                        'Id',
+                        'Name',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    );
+                }, 'city' => function ($query) {
+                    $query->select(
+                        'Id',
+                        'Name',
+                        'CountryId',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    )->with(['country' => function ($subQuery) {
+                        $subQuery->select(
+                            'Id',
+                            'Name',
+                            DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                            DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                        );
+                    }]);
+                }, 'district' => function ($query) {
+                    $query->select(
+                        'Id',
+                        'Name',
+                        'CityId',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    )->with(['city' => function ($subQuery) {
+                        $subQuery->select(
+                            'Id',
+                            'Name',
+                            'CountryId',
+                            DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                            DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                        )->with(['country' => function ($innerQuery) {
+                            $innerQuery->select(
+                                'Id',
+                                'Name',
+                                DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                                DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                            );
+                        }]);
+                    }]);
+                },
+            ])->select([
+                'Id',
+                'FirstName',
+                'LastName',
+                'UserName',
+                'Email',
+                'Password',
+                'PasswordHash',
+                'ImagePath',
+                'TCKN',
+                'MotherName',
+                'FatherName',
+                'BirthDate',
+                DB::raw("CASE WHEN Gender = 'E' THEN 'Erkek' ELSE 'Kadın' END AS Gender"),
+                'CivilStatus',
+                'EmploymentDate',
+                DB::raw("CASE WHEN MilitaryStatus = 'C' THEN 'Tamamlamış' WHEN MilitaryStatus = 'P' THEN 'Tecilli' WHEN MilitaryStatus = 'E' THEN 'Muaf' ELSE NULL END AS MilitaryStatus"),
+                'PostponementDate',
+                'Address',
+                'RoleId',
+                'CountryId',
+                'CityId',
+                'DistrictId',
                 DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
-                DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt"), 'RoleId'])->get();
+                DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt"),
+            ])->get();
 
             $users = $users->map(function ($user) {
                 return $this->dataFormatting($user);
@@ -102,13 +176,86 @@ class UserController extends Controller
     {
         try{
             $user = User::with(['role' => function ($query) {
-                $query->select('Id', 'Name', DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
-                    DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt"));
-            }])->where('Id', $id)->select(['Id', 'FirstName', 'LastName', 'UserName', 'Email', 'Password', 'PasswordHash',
+                    $query->select(
+                        'Id',
+                        'Name',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    );
+                }, 'country' => function ($query) {
+                    $query->select(
+                        'Id',
+                        'Name',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    );
+                }, 'city' => function ($query) {
+                    $query->select(
+                        'Id',
+                        'Name',
+                        'CountryId',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    )->with(['country' => function ($subQuery) {
+                        $subQuery->select(
+                            'Id',
+                            'Name',
+                            DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                            DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                        );
+                    }]);
+                }, 'district' => function ($query) {
+                    $query->select(
+                        'Id',
+                        'Name',
+                        'CityId',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    )->with(['city' => function ($subQuery) {
+                        $subQuery->select(
+                            'Id',
+                            'Name',
+                            'CountryId',
+                            DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                            DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                        )->with(['country' => function ($innerQuery) {
+                            $innerQuery->select(
+                                'Id',
+                                'Name',
+                                DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                                DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                            );
+                        }]);
+                    }]);
+                },
+            ])->where('Id', $id)->select([
+                'Id',
+                'FirstName',
+                'LastName',
+                'UserName',
+                'Email',
+                'Password',
+                'PasswordHash',
+                'ImagePath',
+                'TCKN',
+                'MotherName',
+                'FatherName',
+                'BirthDate',
+                DB::raw("CASE WHEN Gender = 'E' THEN 'Erkek' ELSE 'Kadın' END as Gender"),
+                'CivilStatus',
+                'EmploymentDate',
+                DB::raw("CASE WHEN MilitaryStatus = 'C' THEN 'Tamamlamış' WHEN MilitaryStatus = 'P' THEN 'Tecilli' WHEN MilitaryStatus = 'E' THEN 'Muaf' ELSE NULL END AS MilitaryStatus"),
+                'PostponementDate',
+                'Address',
+                'RoleId',
+                'CountryId',
+                'CityId',
+                'DistrictId',
                 DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
-                DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt"), 'RoleId'])->first();
+                DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt"),
+            ])->first();
 
-            if($user){
+            if($user) {
                 $user = $this->dataFormatting($user);
                 return response()->json($user, 200);
             }
@@ -192,28 +339,120 @@ class UserController extends Controller
      *       )
      * )
      */
-    public function CreateUser(Request $request): JsonResponse
+    public function CreateUser(UserRequest $request): JsonResponse
     {
         try{
-            $email = $request->input('Email');
-            $username = $request->input('UserName');
+            $validatedData = $request->validated();
 
             $addedUser = [
-                'FirstName' => $request->input('FirstName'),
-                'LastName' => $request->input('LastName'),
-                'UserName' => $username,
-                'Email' => $email,
-                'Password' => $request->input('Password'),
-                'PasswordHash' => password_hash($request->input('Password'), PASSWORD_DEFAULT),
-                'RoleId' => $request->input('RoleId'),
+                'FirstName' => $validatedData['FirstName'],
+                'LastName' => $validatedData['LastName'],
+                'UserName' => $validatedData['UserName'],
+                'Email' => $validatedData['Email'],
+                'Password' => $validatedData['Password'],
+                'PasswordHash' => password_hash($validatedData['Password'], PASSWORD_DEFAULT),
+                'RoleId' => $validatedData['RoleId'],
+                'ImagePath' => $validatedData['ImagePath'],
+                'TCKN' => $validatedData['TCKN'],
+                'MotherName' => $validatedData['MotherName'],
+                'FatherName' => $validatedData['FatherName'],
+                'BirthDate' => $validatedData['BirthDate'],
+                'Gender' => $validatedData['Gender'],
+                'CivilStatus' => $validatedData['CivilStatus'],
+                'EmploymentDate' => $validatedData['EmploymentDate'],
+                'MilitaryStatus' => $validatedData['MilitaryStatus'],
+                'PostponementDate' => $validatedData['PostponementDate'],
+                'CountryId' => $validatedData['CountryId'],
+                'CityId' => $validatedData['CityId'],
+                'DistrictId' => $validatedData['DistrictId'],
+                'Address' => $validatedData['Address'],
             ];
 
             $user = User::create($addedUser);
-            $userWithRole = User::with('role')->where('users.Id', '=', $user->Id)->first();
 
-            if ($userWithRole) {
-                $userWithRole = $this->dataFormatting($userWithRole);
-                return response()->json($userWithRole, 200);
+            $userData = User::with(['role' => function ($query) {
+                $query->select(
+                    'Id',
+                    'Name',
+                    DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                    DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                );
+            }, 'country' => function ($query) {
+                $query->select(
+                    'Id',
+                    'Name',
+                    DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                    DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                );
+            }, 'city' => function ($query) {
+                $query->select(
+                    'Id',
+                    'Name',
+                    'CountryId',
+                    DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                    DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                )->with(['country' => function ($subQuery) {
+                    $subQuery->select(
+                        'Id',
+                        'Name',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    );
+                }]);
+            }, 'district' => function ($query) {
+                $query->select(
+                    'Id',
+                    'Name',
+                    'CityId',
+                    DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                    DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                )->with(['city' => function ($subQuery) {
+                    $subQuery->select(
+                        'Id',
+                        'Name',
+                        'CountryId',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    )->with(['country' => function ($innerQuery) {
+                        $innerQuery->select(
+                            'Id',
+                            'Name',
+                            DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                            DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                        );
+                    }]);
+                }]);
+            },
+            ])->where('Id', $user['Id'])->select([
+                'Id',
+                'FirstName',
+                'LastName',
+                'UserName',
+                'Email',
+                'Password',
+                'PasswordHash',
+                'ImagePath',
+                'TCKN',
+                'MotherName',
+                'FatherName',
+                'BirthDate',
+                'Gender',
+                'CivilStatus',
+                'EmploymentDate',
+                'MilitaryStatus',
+                'PostponementDate',
+                'Address',
+                'RoleId',
+                'CountryId',
+                'CityId',
+                'DistrictId',
+                DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt"),
+            ])->first();
+
+            if ($userData) {
+                $userData = $this->dataFormatting($userData);
+                return response()->json($userData, 200);
             }
 
             else {
@@ -222,7 +461,7 @@ class UserController extends Controller
         }
 
         catch (\Exception $e) {
-            return response()->json([ 'code' => 400, 'message' => "Girilen kullanıcı adı, email veya parola bilgisine sahip bir kayıt zaten var." ], 200);
+            return response()->json([ 'code' => 400, 'message' => "Girilen kullanıcı adı, email, parola veya tc kimlik numarası bilgisine sahip bir kayıt zaten var." ], 200);
         }
     }
 
@@ -238,31 +477,125 @@ class UserController extends Controller
      *       )
      * )
      */
-    public function EditUser(Request $request): JsonResponse
+    public function EditUser(UserRequest $request): JsonResponse
     {
         try {
-            $user = User::find($request->Id);
+            $validatedData = $request->validated();
+            $user = User::find($validatedData['Id']);
 
             if($user){
-                User::where('Id', $request->Id)
+                User::where('Id', $validatedData['Id'])
                     ->update([
-                        'FirstName' => $request->FirstName,
-                        'LastName' => $request->LastName,
-                        'UserName' => $request->UserName,
-                        'Email' => $request->Email,
-                        'Password' => $request->Password,
-                        'PasswordHash' => password_hash($request->Password, PASSWORD_DEFAULT),
-                        'RoleId' => $request->RoleId
+                        'FirstName' => $validatedData['FirstName'],
+                        'LastName' => $validatedData['LastName'],
+                        'UserName' => $validatedData['UserName'],
+                        'Email' => $validatedData['Email'],
+                        'Password' => $validatedData['Password'],
+                        'PasswordHash' => password_hash($validatedData['Password'], PASSWORD_DEFAULT),
+                        'RoleId' => $validatedData['RoleId'],
+                        'ImagePath' => $validatedData['ImagePath'],
+                        'TCKN' => $validatedData['TCKN'],
+                        'MotherName' => $validatedData['MotherName'],
+                        'FatherName' => $validatedData['FatherName'],
+                        'BirthDate' => $validatedData['BirthDate'],
+                        'Gender' => $validatedData['Gender'],
+                        'CivilStatus' => $validatedData['CivilStatus'],
+                        'EmploymentDate' => $validatedData['EmploymentDate'],
+                        'MilitaryStatus' => $validatedData['MilitaryStatus'],
+                        'PostponementDate' => $validatedData['PostponementDate'],
+                        'CountryId' => $validatedData['CountryId'],
+                        'CityId' => $validatedData['CityId'],
+                        'DistrictId' => $validatedData['DistrictId'],
+                        'Address' => $validatedData['Address'],
                     ]);
 
-                $userWithRole = User::with('role')->where('users.Id', '=', $request->Id)->get()->first();
-                $userWithRole = $this->dataFormatting($userWithRole);
-                return response()->json($userWithRole, 200);
+                $userData = User::with(['role' => function ($query) {
+                    $query->select(
+                        'Id',
+                        'Name',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    );
+                }, 'country' => function ($query) {
+                    $query->select(
+                        'Id',
+                        'Name',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    );
+                }, 'city' => function ($query) {
+                    $query->select(
+                        'Id',
+                        'Name',
+                        'CountryId',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    )->with(['country' => function ($subQuery) {
+                        $subQuery->select(
+                            'Id',
+                            'Name',
+                            DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                            DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                        );
+                    }]);
+                }, 'district' => function ($query) {
+                    $query->select(
+                        'Id',
+                        'Name',
+                        'CityId',
+                        DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                        DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                    )->with(['city' => function ($subQuery) {
+                        $subQuery->select(
+                            'Id',
+                            'Name',
+                            'CountryId',
+                            DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                            DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                        )->with(['country' => function ($innerQuery) {
+                            $innerQuery->select(
+                                'Id',
+                                'Name',
+                                DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                                DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt")
+                            );
+                        }]);
+                    }]);
+                },
+                ])->where('Id', $user['Id'])->select([
+                    'Id',
+                    'FirstName',
+                    'LastName',
+                    'UserName',
+                    'Email',
+                    'Password',
+                    'PasswordHash',
+                    'ImagePath',
+                    'TCKN',
+                    'MotherName',
+                    'FatherName',
+                    'BirthDate',
+                    'Gender',
+                    'CivilStatus',
+                    'EmploymentDate',
+                    'MilitaryStatus',
+                    'PostponementDate',
+                    'Address',
+                    'RoleId',
+                    'CountryId',
+                    'CityId',
+                    'DistrictId',
+                    DB::raw("DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt"),
+                    DB::raw("DATE_FORMAT(updatedAt, '%d.%m.%Y %H:%i:%s') as updatedAt"),
+                ])->first();
+
+                $userData = $this->dataFormatting($userData);
+                return response()->json($userData, 200);
             }
 
             return response()->json(['message' => 'Kullanıcı kaydı bulunamadı!'], 204);
         } catch (\Exception $e) {
-            return response()->json([ 'code' => 400, 'message' => "Girilen kullanıcı adı, email veya parola bilgisine sahip bir kayıt zaten var." ]);
+            return response()->json([ 'code' => 400, 'message' => "Girilen kullanıcı adı, email, parola veya tc kimlik numarası bilgisine sahip bir kayıt zaten var." ]);
         }
     }
 
@@ -363,7 +696,7 @@ class UserController extends Controller
                 'body' => 'Talep edilen evrak ' . ($isApprove ? 'onaylandı' : 'reddedildi') . '. Çalışana bildirim maili gönderildi.',
             ]);
 
-            $token = explode('', $request->header('Authorization'))[1];
+            $token = explode(' ', $request->header('Authorization'))[1];
 
             if ($token) {
                 JWT::decode($token, new Key($this->secretKey, 'HS256'));
@@ -429,12 +762,58 @@ class UserController extends Controller
     private function dataFormatting($data)
     {
         $data = $data->toArray();
+
         $data['createdAt'] = Carbon::parse($data['createdAt'])->format('d.m.Y H:i:s');
         $data['updatedAt'] = Carbon::parse($data['updatedAt'])->format('d.m.Y H:i:s');
-        $data['Role'] = $data['role'];
-        unset($data['role']);
-        $data['Role']['createdAt'] = Carbon::parse($data['Role']['createdAt'])->format('d.m.Y H:i:s');
-        $data['Role']['updatedAt'] = Carbon::parse($data['Role']['updatedAt'])->format('d.m.Y H:i:s');
+        $data['BirthDate'] = Carbon::parse($data['BirthDate'])->format('d.m.Y H:i:s');
+        $data['EmploymentDate'] = Carbon::parse($data['EmploymentDate'])->format('d.m.Y H:i:s');
+
+        if(!empty($data['PostponementDate'])) {
+            $data['PostponementDate'] = Carbon::parse($data['PostponementDate'])->format('d.m.Y H:i:s');
+        }
+
+        $formatNestedData = function (&$relation) use (&$formatNestedData) {
+            if ($relation) {
+                if (isset($relation['createdAt'])) {
+                    $relation['createdAt'] = Carbon::parse($relation['createdAt'])->format('d.m.Y H:i:s');
+                }
+                if (isset($relation['updatedAt'])) {
+                    $relation['updatedAt'] = Carbon::parse($relation['updatedAt'])->format('d.m.Y H:i:s');
+                }
+
+                foreach ($relation as $key => &$value) {
+                    if (is_array($value) && isset($value['createdAt'])) {
+                        $formatNestedData($value);
+                    }
+                }
+            }
+        };
+
+        $relations = ['role' => 'Role', 'country' => 'Country', 'city' => 'City', 'district' => 'District'];
+
+        foreach ($relations as $key => $newKey) {
+            if (isset($data[$key])) {
+                $data[$newKey] = $data[$key];
+                unset($data[$key]);
+                $formatNestedData($data[$newKey]);
+            }
+        }
+
+        if (isset($data['City']['country'])) {
+            $data['City']['Country'] = $data['City']['country'];
+            unset($data['City']['country']);
+        }
+
+        if (isset($data['District']['city'])) {
+            $data['District']['City'] = $data['District']['city'];
+            unset($data['District']['city']);
+
+            if (isset($data['District']['City']['country'])) {
+                $data['District']['City']['Country'] = $data['District']['City']['country'];
+                unset($data['District']['City']['country']);
+            }
+        }
+
         return $data;
     }
 }

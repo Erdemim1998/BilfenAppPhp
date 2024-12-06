@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\RoleRequest;
 use App\Models\Document;
 use App\Models\Role;
 use App\Models\User;
@@ -105,11 +106,13 @@ class RoleController extends Controller
      *       )
      * )
      */
-    public function CreateRole(Request $request): JsonResponse
+    public function CreateRole(RoleRequest $request): JsonResponse
     {
         try {
+            $validatedData = $request->validated();
+
             $addedRole = Role::create([
-                'Name' => $request->Name
+                'Name' => $validatedData['Name']
             ]);
 
             $role = Role::where('Id', $addedRole->Id)->selectRaw("Id, Name, DATE_FORMAT(createdAt, '%d.%m.%Y %H:%i:%s') as createdAt,
@@ -138,15 +141,17 @@ class RoleController extends Controller
      *       )
      * )
      */
-    public function EditRole(Request $request): JsonResponse
+    public function EditRole(RoleRequest $request): JsonResponse
     {
         try {
-            $role = Role::find($request->Id);
+            $validatedData = $request->validated();
+
+            $role = Role::find($validatedData['Id']);
 
             if($role) {
-                Role::where('Id', $request->Id)
+                Role::where('Id', $validatedData['Id'])
                     ->update([
-                        'Name' => $request->Name
+                        'Name' => $validatedData['Name']
                     ]);
 
                 $role = Role::where('Id', $role->Id)->select(['Id', 'Name',

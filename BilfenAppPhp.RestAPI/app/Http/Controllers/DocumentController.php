@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\DocumentRequest;
 use App\Models\Document;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -171,14 +172,16 @@ class DocumentController extends Controller
      *       )
      * )
      */
-    public function CreateDocument(Request $request): JsonResponse
+    public function CreateDocument(DocumentRequest $request): JsonResponse
     {
         try {
+            $validatedData = $request->validated();
+
             $addedDocument = Document::create([
-                'Name' => $request->Name,
-                'FilePath' => $request->FilePath,
-                'Status' => $request->Status,
-                'UserId' => $request->UserId
+                'Name' => $validatedData['Name'],
+                'FilePath' => $validatedData['FilePath'],
+                'Status' => $validatedData['Status'],
+                'UserId' => $validatedData['UserId']
             ]);
 
             $documentWithUserAndRole = Document::with(['user' => function ($query) {
@@ -219,18 +222,20 @@ class DocumentController extends Controller
      *       )
      * )
      */
-    public function EditDocument(Request $request): JsonResponse
+    public function EditDocument(DocumentRequest $request): JsonResponse
     {
         try {
-            $document = Document::find($request->Id);
+            $validatedData = $request->validated();
+
+            $document = Document::find($validatedData['Id']);
 
             if($document) {
-                Document::where('Id', $request->Id)
+                Document::where('Id', $validatedData['Id'])
                     ->update([
-                        'Name' => $request->Name,
-                        'FilePath' => $request->FilePath,
-                        'Status' => $request->Status,
-                        'UserId' => $request->UserId
+                        'Name' => $validatedData['Name'],
+                        'FilePath' => $validatedData['FilePath'],
+                        'Status' => $validatedData['Status'],
+                        'UserId' => $validatedData['UserId']
                     ]);
 
                 $documentWithUserAndRole = Document::with(['user' => function ($query) {

@@ -325,23 +325,23 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="firstName" class="form-label" id="lblFirstName">Adı <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <input type="text" id="firstName" class="form-control"
                                                placeholder="Kullanıcı isim bilgisini giriniz" />
 
                                         <span id="UserFirstName-error" class="text-danger"></span>
                                     </div>
 
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="lastName" class="form-label" id="lblLastName">Soyadı <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <input type="text" id="lastName" class="form-control"
                                                placeholder="Kullanıcı soyisim bilgisini giriniz"/>
 
@@ -349,23 +349,23 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="userName" class="form-label" id="lblUserNameText">Kullanıcı Adı <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <input type="text" id="userName" class="form-control"
                                                placeholder="Kullanıcı adı bilgisini giriniz" />
 
                                         <span id="UserUserName-error" class="text-danger"></span>
                                     </div>
 
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="email" class="form-label" id="lblEmailText">Email <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <input type="email" id="email" class="form-control"
                                                placeholder="Kullanıcı email bilgisini giriniz"/>
 
@@ -374,22 +374,22 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="password" class="form-label" id="lblPassword">Parola <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <input type="password" id="password" class="form-control"
                                                placeholder="Kullanıcı parola bilgisini giriniz"/>
 
                                         <span id="UserPassword-error" class="text-danger"></span>
                                     </div>
 
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
                                         <label for="selectedRole" class="form-label" id="lblRole">Rol <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8">
                                         <select id="selectedRole" class="form-select form-control" aria-label="Default select example">
                                         </select>
                                     </div>
@@ -398,12 +398,12 @@
                         </div>
                         <div class="tab-pane fade" id="core" role="tabpanel" aria-labelledby="core-tab">
                             <div class="border p-3">
-                                <div class="row mb-3">
-                                    <div class="col-2">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label class="form-label" id="lblImage">Fotoğraf</label>
                                     </div>
 
-                                    <div class="col-4">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <div class="upload-container m-0" style="width:80%;">
                                             <h4 id="headerUploadProfilePhoto">Profil Fotoğrafı Yükle</h4>
                                             <p id="txtUploadProfilePhoto" class="text-muted">Resmi sürükleyin ve bırakın veya seç butonuna tıklayın</p>
@@ -414,11 +414,11 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-2">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="serialNumber" class="form-label" id="lblSerialNumber">TC Kimlik Numarası <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-4">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <input type="text" id="serialNumber" class="form-control"
                                                placeholder="TC Kimlik Numarası bilgisini giriniz">
 
@@ -426,23 +426,23 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="motherName" class="form-label" id="lblMother">Anne Adı <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <input type="text" id="motherName" class="form-control"
                                                placeholder="Anne adı bilgisini giriniz" />
 
                                         <span id="UserMotherName-error" class="text-danger"></span>
                                     </div>
 
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="fatherName" class="form-label" id="lblFather">Baba Adı <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <input type="text" id="fatherName" class="form-control"
                                                placeholder="Baba adı bilgisini giriniz"/>
 
@@ -450,23 +450,23 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="birthDate" class="form-label" id="lblBirth">Doğum Tarihi <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <input type="date" id="birthDate" class="form-control"
                                                placeholder="Doğum tarihi bilgisini giriniz" />
 
                                         <span id="UserBirthDate-error" class="text-danger"></span>
                                     </div>
 
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="gender" class="form-label" id="lblGenderText">Cinsiyet <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <select id="gender" class="form-select form-control">
                                             <option value="E">Erkek</option>
                                             <option value="K">Kadın</option>
@@ -476,12 +476,12 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="civilStatus" class="form-label" id="lblCivilStatusText">Medeni Hal <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <select id="civilStatus" class="form-select form-control">
                                             <option value="Evli">Evli</option>
                                             <option value="Bekar">Bekar</option>
@@ -490,11 +490,11 @@
                                         <span id="UserCivilStatus-error" class="text-danger"></span>
                                     </div>
 
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="employmentDate" class="form-label" id="lblEmploymentDateText">İşe Giriş Tarihi <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <input type="date" id="employmentDate" class="form-control"
                                                placeholder="İşe giriş tarihi bilgisini giriniz" />
 
@@ -503,11 +503,11 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="militaryStatus" class="form-label" id="lblMilitaryStatusText">Askerlik Durumu</label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <select id="militaryStatus" class="form-select form-control">
                                             <option value=""></option>
                                             <option value="C">Tamamlamış</option>
@@ -516,11 +516,11 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
                                         <label for="postponementDate" class="form-label" id="lblPostponementDate" style="display: none;">Tecil Tarihi <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8">
                                         <input type="date" id="postponementDate" class="form-control"
                                                placeholder="Tecil tarihi bilgisini giriniz" style="display: none;" />
 
@@ -531,12 +531,12 @@
                         </div>
                         <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
                             <div class="border p-3">
-                                <div class="row mb-3">
-                                    <div class="col-2">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="countryId" class="form-label" id="lblCountry">Ülke <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-4">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <div class="d-flex">
                                             <input type="hidden" id="countryId">
                                             <input id="countryName" class="form-control" disabled>
@@ -551,11 +551,11 @@
                                         <div id="UserCountryId-error" class="text-danger"></div>
                                     </div>
 
-                                    <div class="col-2">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="cityId" class="form-label" id="lblCity">İl <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-4">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <div class="d-flex">
                                             <input type="hidden" id="cityId">
                                             <input id="cityName" class="form-control" disabled>
@@ -572,11 +572,11 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-2">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                         <label for="districtId" class="form-label" id="lblDistrict">İlçe <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-4">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                         <div class="d-flex">
                                             <input type="hidden" id="districtId">
                                             <input id="districtName" class="form-control" disabled style="height:37.6px;">
@@ -591,11 +591,11 @@
                                         <span id="UserDistrictId-error" class="text-danger"></span>
                                     </div>
 
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
                                         <label for="address" class="form-label" id="lblAdres">Adres <span class="star">*</span></label>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                                    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8">
                                         <textarea id="addressText" class="form-control" placeholder="Adres bilgisini giriniz" rows="5">
                                         </textarea>
 
@@ -819,92 +819,92 @@
                         <img id="profilePageImage" src="" class="w-100" alt="" style="border-radius: 50%; object-fit: cover;" />
                     </div>
                     <div class="col-8">
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileUserName">Kullanıcı Adı:</span>
                                 <span id="lblUserName"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileEmail">Email:</span>
                                 <span id="lblEmail"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileMotherName">Anne Adı:</span>
                                 <span id="lblMotherName"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileFatherName">Baba Adı:</span>
                                 <span id="lblFatherName"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileRole">Rol:</span>
                                 <span id="lblRoleName"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileBirthDate">Doğum Tarihi:</span>
                                 <span id="lblBirthDate"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileGender">Cinsiyet:</span>
                                 <span id="lblGender"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileCivilStatus">Medeni Hal:</span>
                                 <span id="lblCivilStatus"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileEmploymentDate">İşe Alım Tarihi:</span>
                                 <span id="lblEmploymentDate"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileCountry">Ülke:</span>
                                 <span id="lblCountryName"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileMilitaryStatus">Askerlik Durumu:</span>
                                 <span id="lblMilitaryStatus"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfilePostponementDate">Tecil Tarihi:</span>
                                 <span id="lblPostponementDateText"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileCity">İl:</span>
                                 <span id="lblCityName"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileDistrict">İlçe:</span>
                                 <span id="lblDistrictName"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileAddress">Adres:</span>
                                 <span id="lblAddress"></span>
                             </div>
@@ -934,53 +934,53 @@
                     </div>
 
                     <div class="border p-3">
-                        <div class="row mb-3">
-                            <div class="col-2">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                 <label class="form-label" id="documentCreatedDate">Oluşturulma Tarihi</label>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                 <p id="txtCreatedDate"></p>
                             </div>
 
-                            <div class="col-2">
+                            <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                 <label class="form-label" id="documentUpdatedDate">Son Güncelleme Tarihi</label>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                 <p id="txtUpdatedDate"></p>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-2">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                 <label for="documentName" class="form-label" id="lblDocumentName"
                                 >Evrak Adı <span class="star">*</span></label
                                 >
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                 <input type="text" id="documentName" class="form-control"
                                        placeholder="Evrak adı bilgisini giriniz"/>
 
                                 <span id="Name-error" class="text-danger"></span>
                             </div>
 
-                            <div class="col-2">
+                            <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                 <label class="form-label" id="lblStatus">Durumu</label>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                 <p id="txtState"></p>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 mb-3">
                                 <label for="document" class="form-label" id="lblDocument">Evrak <span class="star">*</span></label>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-3">
                                 <input type="file" id="document" class="form-control" onchange="handleFileChange(event)"/>
                                 <p id="filePath"></p>
                                 <span id="FilePath-error" class="text-danger"></span>
@@ -999,92 +999,92 @@
                         <img id="profilePageImage" src="" class="w-100" alt="" style="border-radius: 50%; object-fit: cover;" />
                     </div>
                     <div class="col-8">
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileUserName">Kullanıcı Adı:</span>
                                 <span id="lblUserName"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileEmail">Email:</span>
                                 <span id="lblEmail"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileMotherName">Anne Adı:</span>
                                 <span id="lblMotherName"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileFatherName">Baba Adı:</span>
                                 <span id="lblFatherName"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileRole">Rol:</span>
                                 <span id="lblRoleName"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileBirthDate">Doğum Tarihi:</span>
                                 <span id="lblBirthDate"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileGender">Cinsiyet:</span>
                                 <span id="lblGender"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileCivilStatus">Medeni Hal:</span>
                                 <span id="lblCivilStatus"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileEmploymentDate">İşe Alım Tarihi:</span>
                                 <span id="lblEmploymentDate"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileCountry">Ülke:</span>
                                 <span id="lblCountryName"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileMilitaryStatus">Askerlik Durumu:</span>
                                 <span id="lblMilitaryStatus"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfilePostponementDate">Tecil Tarihi:</span>
                                 <span id="lblPostponementDateText"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileCity">İl:</span>
                                 <span id="lblCityName"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileDistrict">İlçe:</span>
                                 <span id="lblDistrictName"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileAddress">Adres:</span>
                                 <span id="lblAddress"></span>
                             </div>
@@ -1151,92 +1151,92 @@
                         <img id="profilePageImage" src="" class="w-100" alt="" style="border-radius: 50%; object-fit: cover;" />
                     </div>
                     <div class="col-8">
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileUserName">Kullanıcı Adı:</span>
                                 <span id="lblUserName"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileEmail">Email:</span>
                                 <span id="lblEmail"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileMotherName">Anne Adı:</span>
                                 <span id="lblMotherName"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileFatherName">Baba Adı:</span>
                                 <span id="lblFatherName"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileRole">Rol:</span>
                                 <span id="lblRoleName"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileBirthDate">Doğum Tarihi:</span>
                                 <span id="lblBirthDate"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileGender">Cinsiyet:</span>
                                 <span id="lblGender"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileCivilStatus">Medeni Hal:</span>
                                 <span id="lblCivilStatus"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileEmploymentDate">İşe Alım Tarihi:</span>
                                 <span id="lblEmploymentDate"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileCountry">Ülke:</span>
                                 <span id="lblCountryName"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileMilitaryStatus">Askerlik Durumu:</span>
                                 <span id="lblMilitaryStatus"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfilePostponementDate">Tecil Tarihi:</span>
                                 <span id="lblPostponementDateText"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileCity">İl:</span>
                                 <span id="lblCityName"></span>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileDistrict">İlçe:</span>
                                 <span id="lblDistrictName"></span>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <span class="fw-bold" id="lblProfileAddress">Adres:</span>
                                 <span id="lblAddress"></span>
                             </div>
